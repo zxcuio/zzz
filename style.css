@@ -1,0 +1,53 @@
+body {
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f0f0f0;
+}
+
+#calculator {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#display {
+  width: 100%;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  text-align: right;
+}
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+
+button {
+  flex: 1;
+  margin: 0 0.25rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+button.hex-only {
+  display: none;
+}
+
+.hex-row {
+  display: none;
+}
+
+.scientific {
+  display: flex;
+}

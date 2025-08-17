@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>シンプル関数電卓</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="calculator">
+    <input id="display" type="text" readonly value="0" />
+    <div class="top-row">
+      <button id="toggle-mode">標準</button>
+      <button id="toggle-base">HEX</button>
+    </div>
+    <div id="buttons">
+      <div class="row scientific">
+        <button class="function" data-func="sin">sin</button>
+        <button class="function" data-func="cos">cos</button>
+        <button class="function" data-func="tan">tan</button>
+        <button class="function" data-func="log">log</button>
+        <button class="function" data-func="sqrt">√</button>
+      </div>
+      <div class="row hex-row">
+        <button class="digit hex-only" data-value="A">A</button>
+        <button class="digit hex-only" data-value="B">B</button>
+        <button class="digit hex-only" data-value="C">C</button>
+        <button class="digit hex-only" data-value="D">D</button>
+        <button class="digit hex-only" data-value="E">E</button>
+        <button class="digit hex-only" data-value="F">F</button>
+      </div>
+      <div class="row">
+        <button class="digit" data-value="7">7</button>
+        <button class="digit" data-value="8">8</button>
+        <button class="digit" data-value="9">9</button>
+        <button class="operator" data-op="/">÷</button>
+      </div>
+      <div class="row">
+        <button class="digit" data-value="4">4</button>
+        <button class="digit" data-value="5">5</button>
+        <button class="digit" data-value="6">6</button>
+        <button class="operator" data-op="*">×</button>
+      </div>
+      <div class="row">
+        <button class="digit" data-value="1">1</button>
+        <button class="digit" data-value="2">2</button>
+        <button class="digit" data-value="3">3</button>
+        <button class="operator" data-op="-">-</button>
+      </div>
+      <div class="row">
+        <button class="digit" data-value="0">0</button>
+        <button class="digit" data-value=".">.</button>
+        <button id="equals">=</button>
+        <button class="operator" data-op="+">+</button>
+      </div>
+      <div class="row">
+        <button id="clear">C</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
