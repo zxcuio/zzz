@@ -103,6 +103,17 @@ function appendParenthesis(p) {
   updateDisplay();
 }
 
+// バックスペースで1文字削除
+function handleBackspace() {
+  if (expression === '') return;
+  // 式の末尾を削除
+  expression = expression.slice(0, -1);
+  // 式末尾に残る数値部分を現在の入力として取得
+  const match = expression.match(/[0-9A-F.]+$/);
+  currentInput = match ? match[0] : '';
+  updateDisplay();
+}
+
 // 式を評価して結果を計算
 function calculate() {
   // 式が空なら何もしない
@@ -274,5 +285,59 @@ document.querySelectorAll('.function').forEach(btn => {
 // モード切替ボタンと基数切替ボタン
 modeBtn.addEventListener('click', toggleMode);
 baseBtn.addEventListener('click', toggleBase);
+
+// キーボード入力に対応
+document.addEventListener('keydown', e => {
+  const key = e.key;
+
+  // 数字入力
+  if (/^[0-9]$/.test(key)) {
+    appendDigit(key);
+    return;
+  }
+
+  const upper = key.toUpperCase();
+  // 16進数入力
+  if (currentBase === 16 && /^[A-F]$/.test(upper)) {
+    appendDigit(upper);
+    return;
+  }
+
+  switch (key) {
+    case '.':
+      appendDigit('.');
+      break;
+    case '+':
+    case '-':
+    case '*':
+    case '/':
+      appendOperator(key);
+      break;
+    case '(':
+      appendParenthesis('(');
+      break;
+    case ')':
+      appendParenthesis(')');
+      break;
+    case 'Enter':
+    case '=':
+      e.preventDefault();
+      calculate();
+      break;
+    case 'Backspace':
+      e.preventDefault();
+      handleBackspace();
+      break;
+    case 'Escape':
+    case 'c':
+    case 'C':
+      currentInput = '';
+      expression = '';
+      updateDisplay();
+      break;
+    default:
+      break;
+  }
+});
 
 updateDisplay();
