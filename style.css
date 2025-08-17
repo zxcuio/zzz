@@ -21,6 +21,13 @@ body {
   text-align: right;
 }
 
+#expression {
+  width: 100%;
+  min-height: 1.2rem;
+  text-align: right;
+  color: #666;
+}
+
 .top-row {
   display: flex;
   justify-content: space-between;

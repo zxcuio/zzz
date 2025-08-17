@@ -7,12 +7,19 @@
 </head>
 <body>
   <div id="calculator">
+    <div id="expression"></div>
     <input id="display" type="text" readonly value="0" />
     <div class="top-row">
       <button id="toggle-mode">標準</button>
       <button id="toggle-base">HEX</button>
     </div>
     <div id="buttons">
+      <div class="row">
+        <button id="mc">MC</button>
+        <button id="mr">MR</button>
+        <button id="mplus">M+</button>
+        <button id="mminus">M-</button>
+      </div>
       <div class="row scientific">
         <button class="function" data-func="sin">sin</button>
         <button class="function" data-func="cos">cos</button>
@@ -47,13 +54,15 @@
         <button class="operator" data-op="-">-</button>
       </div>
       <div class="row">
+        <button id="left-paren">(</button>
+        <button id="right-paren">)</button>
+        <button id="clear">C</button>
+      </div>
+      <div class="row">
         <button class="digit" data-value="0">0</button>
         <button class="digit" data-value=".">.</button>
         <button id="equals">=</button>
         <button class="operator" data-op="+">+</button>
-      </div>
-      <div class="row">
-        <button id="clear">C</button>
       </div>
     </div>
   </div>
