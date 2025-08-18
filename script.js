@@ -384,7 +384,7 @@ function burstFromElement(el) {
 document.querySelectorAll('button').forEach(btn => {
   btn.addEventListener('click', e => {
     burstParticles(e.clientX, e.clientY);
-=======
+
 document.querySelectorAll('button').forEach(btn => {
   btn.addEventListener('click', e => {
     const x = e.clientX;
