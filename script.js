@@ -366,6 +366,7 @@ function createParticle(x, y) {
   particle.addEventListener('animationend', () => particle.remove());
 }
 
+
 function burstParticles(x, y) {
   for (let i = 0; i < 20; i++) {
     createParticle(x, y);
@@ -383,6 +384,14 @@ function burstFromElement(el) {
 document.querySelectorAll('button').forEach(btn => {
   btn.addEventListener('click', e => {
     burstParticles(e.clientX, e.clientY);
+=======
+document.querySelectorAll('button').forEach(btn => {
+  btn.addEventListener('click', e => {
+    const x = e.clientX;
+    const y = e.clientY;
+    for (let i = 0; i < 20; i++) {
+      createParticle(x, y);
+    }
   });
 });
 
