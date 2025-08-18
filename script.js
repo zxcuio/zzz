@@ -366,23 +366,7 @@ function createParticle(x, y) {
   particle.addEventListener('animationend', () => particle.remove());
 }
 
-function burstParticles(x, y) {
-  for (let i = 0; i < 20; i++) {
-    createParticle(x, y);
-  }
-}
 
-function burstFromElement(el) {
-  if (!el) return;
-  const rect = el.getBoundingClientRect();
-  const x = rect.left + rect.width / 2;
-  const y = rect.top + rect.height / 2;
-  burstParticles(x, y);
-}
-
-document.querySelectorAll('button').forEach(btn => {
-  btn.addEventListener('click', e => {
-    burstParticles(e.clientX, e.clientY);
   });
 });
 
