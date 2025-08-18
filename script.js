@@ -293,6 +293,8 @@ document.addEventListener('keydown', e => {
   // 数字入力
   if (/^[0-9]$/.test(key)) {
     appendDigit(key);
+    const btn = document.querySelector(`button[data-value="${key}"]`);
+    burstFromElement(btn);
     return;
   }
 
@@ -300,29 +302,36 @@ document.addEventListener('keydown', e => {
   // 16進数入力
   if (currentBase === 16 && /^[A-F]$/.test(upper)) {
     appendDigit(upper);
+    const btn = document.querySelector(`button[data-value="${upper}"]`);
+    burstFromElement(btn);
     return;
   }
 
   switch (key) {
     case '.':
       appendDigit('.');
+      burstFromElement(document.querySelector('button[data-value="."]'));
       break;
     case '+':
     case '-':
     case '*':
     case '/':
       appendOperator(key);
+      burstFromElement(document.querySelector(`button[data-op="${key}"]`));
       break;
     case '(':
       appendParenthesis('(');
+      burstFromElement(document.getElementById('left-paren'));
       break;
     case ')':
       appendParenthesis(')');
+      burstFromElement(document.getElementById('right-paren'));
       break;
     case 'Enter':
     case '=':
       e.preventDefault();
       calculate();
+      burstFromElement(document.getElementById('equals'));
       break;
     case 'Backspace':
       e.preventDefault();
@@ -334,6 +343,7 @@ document.addEventListener('keydown', e => {
       currentInput = '';
       expression = '';
       updateDisplay();
+      burstFromElement(document.getElementById('clear'));
       break;
     default:
       break;
@@ -356,6 +366,25 @@ function createParticle(x, y) {
   particle.addEventListener('animationend', () => particle.remove());
 }
 
+
+function burstParticles(x, y) {
+  for (let i = 0; i < 20; i++) {
+    createParticle(x, y);
+  }
+}
+
+function burstFromElement(el) {
+  if (!el) return;
+  const rect = el.getBoundingClientRect();
+  const x = rect.left + rect.width / 2;
+  const y = rect.top + rect.height / 2;
+  burstParticles(x, y);
+}
+
+document.querySelectorAll('button').forEach(btn => {
+  btn.addEventListener('click', e => {
+    burstParticles(e.clientX, e.clientY);
+=======
 document.querySelectorAll('button').forEach(btn => {
   btn.addEventListener('click', e => {
     const x = e.clientX;
